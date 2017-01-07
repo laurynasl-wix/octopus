@@ -2,7 +2,7 @@ const fixtures = require('./support/fixtures'),
   expect = require('chai').expect,
   shelljs = require('shelljs');
 
-describe('octo-bootstrap', function () {
+describe.only('octo-bootstrap', function () {
   this.timeout(10000);
 
   it('should display help', () => {
@@ -63,7 +63,7 @@ describe('octo-bootstrap', function () {
     });
   });
 
-  it.only('should not mark modules as built if -n flag is provided', () => {
+  it('should not mark modules as built if -n flag is provided', () => {
     aProject().inDir(ctx => {
       const out = ctx.octo('bootstrap -n');
       expect(out).to.be.string('Executing \'octo bootstrap\'');
