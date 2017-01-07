@@ -63,7 +63,7 @@ describe('octo-bootstrap', function () {
     });
   });
 
-  it('should not mark modules as built if -n flag is provided', () => {
+  it.only('should not mark modules as built if -n flag is provided', () => {
     aProject().inDir(ctx => {
       const out = ctx.octo('bootstrap -n');
       expect(out).to.be.string('Executing \'octo bootstrap\'');
