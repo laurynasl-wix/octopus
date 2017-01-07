@@ -2,7 +2,7 @@ const fixtures = require('./support/fixtures'),
   expect = require('chai').expect,
   shelljs = require('shelljs');
 
-describe.only('octo-bootstrap', function () {
+describe('octo-bootstrap', function () {
   this.timeout(10000);
 
   it('should display help', () => {
