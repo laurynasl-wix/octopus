@@ -144,7 +144,7 @@ describe('octo-modules', function () {
           expect(out).to.be.string('b (b) (1/1)');
           expect(out).to.be.string('a: ~1.0.0 -> ~2.0.0');
 
-          expect(ctx.exec('git status')).to.be.string('nothing to commit, working directory clean');
+          expect(ctx.exec('git status')).to.be.string('nothing to commit');
           done();
         }
       });
