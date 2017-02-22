@@ -104,7 +104,7 @@ function makePackagesUnbuilt(dirs) {
 
 function isPackageChanged(packageObject) {
   const fullPath = packageObject.fullPath;
-  const ignored = gitignoreParser.compile(collectIgnores(fullPath, []));
+  const ignored = gitignoreParser.compile(collectIgnores(fullPath));
   const targetSentinelForPackage = path.resolve(fullPath, targetFileSentinelFilename);
   return !shelljs.test('-f', targetSentinelForPackage) ||
     findLastModifiedTimeOfPackageSources(packageObject.relativePath, ignored) >
@@ -113,7 +113,6 @@ function isPackageChanged(packageObject) {
 
 function findLastModifiedTimeOfPackageSources(dir, ignored) {
   const entries = shelljs.ls(dir);
-
   return entries.map(entry => path.join(dir, entry)).filter(entry => !ignored(entry)).map(entry =>
     shelljs.test('-d', entry) ?
       findLastModifiedTimeOfPackageSources(entry, ignored) :
